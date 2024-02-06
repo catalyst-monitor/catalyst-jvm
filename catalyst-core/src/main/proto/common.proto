@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package xyz.bliu.codedoctor;
+
+message Path {
+    message Param {
+        string param_name = 1;
+        string arg_value = 2;
+    }
+    string pattern = 1;
+    repeated Param params = 2;
+}
