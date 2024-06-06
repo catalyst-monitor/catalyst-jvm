@@ -53,12 +53,13 @@ class CatalystPlugin(userConfig: Consumer<Config>) : Plugin<CatalystPlugin.Confi
 
                     if (isRecursive != "1") {
                         CatalystServer.getInstance().recordFetch(
-                            ctx.method().name,
-                            ctx.endpointHandlerPath(),
-                            ctx.pathParamMap(),
-                            ctx.status().code,
-                            Duration.between(requestTime, Instant.now()),
-                            context
+                            method = ctx.method().name,
+                            rawPath = ctx.path(),
+                            pathPattern = ctx.endpointHandlerPath(),
+                            patternArgs = ctx.pathParamMap(),
+                            statusCode = ctx.status().code,
+                            duration = Duration.between(requestTime, Instant.now()),
+                            context = context
                         )
                     }
 

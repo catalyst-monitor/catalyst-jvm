@@ -136,8 +136,9 @@ class CatalystServer(
 
     fun recordFetch(
         method: String,
-        pattern: String,
+        pathPattern: String,
         patternArgs: Map<String, String>,
+        rawPath: String,
         statusCode: Int,
         duration: Duration,
         context: ServerRequestContext
@@ -148,7 +149,8 @@ class CatalystServer(
                 fetch = fetch {
                     this.method = method.lowercase(Locale.getDefault())
                     path = path {
-                        this.pattern = pattern
+                        this.rawPath = rawPath
+                        pattern = pathPattern
                         params.addAll(
                             patternArgs.entries.map {
                                 PathKt.param {
@@ -171,6 +173,7 @@ class CatalystServer(
 
     fun recordLog(
         severity: LogSeverity,
+        rawMessage: String,
         message: String,
         error: Throwable?,
         args: List<LogArgument>,
@@ -189,6 +192,7 @@ class CatalystServer(
                         LogSeverity.ERROR -> Library.LogSeverity.ERROR_LOG_SEVERITY
                     }
                     this.message = message
+                    this.rawMessage = rawMessage
                     error?.let {
                         stackTrace = it.stackTraceToString()
                     }

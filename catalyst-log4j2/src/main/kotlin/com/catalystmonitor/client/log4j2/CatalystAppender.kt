@@ -39,10 +39,12 @@ class CatalystAppender(name: String, filter: Filter?) : AbstractAppender(name, f
         val context = CatalystServer.Context.getLocal() ?: return
 
         CatalystServer.getInstance().recordLog(
-            convertLogLevel(event.level),
-            event.message.format,
-            event.thrown,
-            event.message.parameters.mapIndexed { index, value ->
+            severity = convertLogLevel(event.level),
+            rawMessage = event.message.formattedMessage,
+            message = event.message.format,
+            error = event.thrown,
+            // Kotlin doesn't catch this, but parameters can be null.
+            args = event.message.parameters?.mapIndexed { index, value ->
                 when (value) {
                     is Int -> LogArgument(index.toString(), value)
                     is String -> LogArgument(index.toString(), value)
@@ -50,9 +52,9 @@ class CatalystAppender(name: String, filter: Filter?) : AbstractAppender(name, f
                     is Double -> LogArgument(index.toString(), value)
                     else -> LogArgument(index.toString(), value.toString())
                 }
-            },
-            Instant.ofEpochMilli(event.instant.epochMillisecond),
-            context
+            } ?: listOf(),
+            logTime = Instant.ofEpochMilli(event.instant.epochMillisecond),
+            context = context
         )
     }
 
