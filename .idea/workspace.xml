@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b4c7c7c-c96b-4167-8716-48331bedbc7d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-javalin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-javalin/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-javalin/src/main/kotlin/com/catalystmonitor/client/javalin/CatalystPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-javalin/src/main/kotlin/com/catalystmonitor/client/javalin/CatalystPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-log4j2/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-log4j2/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-log4j2/src/main/kotlin/com/catalystmonitor/client/log4j2/CatalystAppender.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-log4j2/src/main/kotlin/com/catalystmonitor/client/log4j2/CatalystAppender.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/catalyst-core">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/catalyst-javalin">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/catalyst-log4j2">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2hTtGkBSdMxBxwbcw9L59X09Q2I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.catalyst-jvm [catalyst-core:generateProto].executor": "Run",
+    "Gradle.catalyst-jvm [catalyst-core:publishAllPublicationsToMyRepoRepository].executor": "Run",
+    "Gradle.catalyst-jvm [catalyst-core:test].executor": "Run",
+    "Gradle.catalyst-jvm [publishAllPublicationsToMyRepoRepository].executor": "Run",
+    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/bill/Work/catalyst-jvm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  },
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/home/bill/.gradle"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="catalyst-jvm [publishAllPublicationsToMyRepoRepository]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishAllPublicationsToMyRepoRepository" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="catalyst-jvm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="catalyst-jvm" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b4c7c7c-c96b-4167-8716-48331bedbc7d" name="Changes" comment="" />
+      <created>1717629802239</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717629802239</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/catalyst-core/src/main/proto" />
+    </ignored-roots>
+  </component>
+</project>
