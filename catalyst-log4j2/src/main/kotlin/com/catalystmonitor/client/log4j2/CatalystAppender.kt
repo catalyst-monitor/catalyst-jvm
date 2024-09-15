@@ -1,6 +1,7 @@
 package com.catalystmonitor.client.log4j2
 
-import com.catalystmonitor.client.core.CatalystServer
+import com.catalystmonitor.client.core.Catalyst
+import com.catalystmonitor.client.core.Log
 import com.catalystmonitor.client.core.LogArgument
 import com.catalystmonitor.client.core.LogSeverity
 import org.apache.logging.log4j.Level
@@ -33,28 +34,27 @@ class CatalystAppender(name: String, filter: Filter?) : AbstractAppender(name, f
     }
 
     override fun append(event: LogEvent) {
-        if (!CatalystServer.hasInstance()) {
+        if (event.marker?.isInstanceOf(CATALYST_IGNORED_MARKER) == true) {
             return
         }
-        val context = CatalystServer.Context.getLocal() ?: return
-
-        CatalystServer.getInstance().recordLog(
-            severity = convertLogLevel(event.level),
-            rawMessage = event.message.formattedMessage,
-            message = event.message.format,
-            error = event.thrown,
-            // Kotlin doesn't catch this, but parameters can be null.
-            args = event.message.parameters?.mapIndexed { index, value ->
-                when (value) {
-                    is Int -> LogArgument(index.toString(), value)
-                    is String -> LogArgument(index.toString(), value)
-                    is Float -> LogArgument(index.toString(), value.toDouble())
-                    is Double -> LogArgument(index.toString(), value)
-                    else -> LogArgument(index.toString(), value.toString())
-                }
-            } ?: listOf(),
-            logTime = Instant.ofEpochMilli(event.instant.epochMillisecond),
-            context = context
+        Catalyst.getReporter().recordLog(
+            Log(
+                severity = convertLogLevel(event.level),
+                rawMessage = event.message.formattedMessage,
+                message = event.message.format,
+                error = event.thrown,
+                // Kotlin doesn't catch this, but parameters can be null.
+                args = event.message.parameters?.mapIndexed { index, value ->
+                    when (value) {
+                        is Int -> LogArgument(index.toString(), value)
+                        is String -> LogArgument(index.toString(), value)
+                        is Float -> LogArgument(index.toString(), value.toDouble())
+                        is Double -> LogArgument(index.toString(), value)
+                        else -> LogArgument(index.toString(), value.toString())
+                    }
+                } ?: listOf(),
+                logTime = Instant.ofEpochMilli(event.instant.epochMillisecond),
+            )
         )
     }
 

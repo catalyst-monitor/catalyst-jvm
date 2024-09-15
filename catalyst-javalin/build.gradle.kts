@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.catalystmonitor.client"
-version = "0.0.2"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -17,6 +17,14 @@ dependencies {
 
     implementation(project(":catalyst-core"))
     implementation("io.javalin:javalin:6.0.0")
+    testImplementation("io.javalin:javalin-testtools:6.0.0")
+    testImplementation("org.assertj:assertj-core:3.26.3")
+    testImplementation(platform("io.opentelemetry:opentelemetry-bom:1.41.0"))
+    testImplementation("io.opentelemetry:opentelemetry-sdk")
+    testImplementation("io.opentelemetry:opentelemetry-api")
+    testImplementation("io.opentelemetry:opentelemetry-sdk-testing")
+    testImplementation("io.opentelemetry.semconv:opentelemetry-semconv:1.26.0-alpha")
+    testImplementation("org.slf4j:slf4j-simple:2.0.11")
 }
 
 tasks.test {

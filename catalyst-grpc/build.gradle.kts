@@ -17,19 +17,22 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    testImplementation("io.mockk:mockk:1.9.3")
-    testImplementation("org.assertj:assertj-core:3.26.3")
-    // Fix error for mockk: https://github.com/mockk/mockk/issues/397
-    testRuntimeOnly("net.bytebuddy:byte-buddy:1.10.21")
+    runtimeOnly("io.grpc:grpc-netty-shaded:1.66.0")
+    implementation(project(":catalyst-core"))
+    implementation("io.grpc:grpc-protobuf:1.66.0")
+    implementation("io.grpc:grpc-stub:1.66.0")
+    compileOnly("org.apache.tomcat:annotations-api:6.0.53")
 
-    implementation("com.google.protobuf:protobuf-java:3.22.2")
-    implementation("com.google.protobuf:protobuf-kotlin:3.22.2")
-    implementation(platform("io.opentelemetry:opentelemetry-bom:1.41.0"))
-    implementation("io.opentelemetry:opentelemetry-sdk")
-    implementation("io.opentelemetry:opentelemetry-api")
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:1.26.0-alpha")
-    implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+    testImplementation("com.google.protobuf:protobuf-java:3.22.2")
+    testImplementation("com.google.protobuf:protobuf-kotlin:3.22.2")
+    testImplementation("io.grpc:grpc-testing:1.66.0")
+    testImplementation("io.grpc:grpc-inprocess:1.66.0")
+    testImplementation("org.assertj:assertj-core:3.26.3")
+    testImplementation(platform("io.opentelemetry:opentelemetry-bom:1.41.0"))
+    testImplementation("io.opentelemetry:opentelemetry-sdk")
+    testImplementation("io.opentelemetry:opentelemetry-api")
     testImplementation("io.opentelemetry:opentelemetry-sdk-testing")
+    testImplementation("io.opentelemetry.semconv:opentelemetry-semconv:1.26.0-alpha")
 }
 
 tasks.test {
@@ -40,41 +43,49 @@ kotlin {
     jvmToolchain(11)
 }
 
-tasks.register<Jar>("sourcesJar") {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
 java {
     withSourcesJar()
 }
 
+protobuf {
+    protoc {
+        // The artifact spec for the Protobuf Compiler
+        artifact = "com.google.protobuf:protoc:3.25.3"
+    }
+    plugins {
+        id("grpc") {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.66.0"
+        }
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.plugins {
+                id("grpc") { }
+            }
+            it.builtins {
+                id("kotlin")
+            }
+        }
+    }
+}
+
 val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
 
-// Not sure why, but the Java protobuf files are included twice.
-// https://github.com/gradle/gradle/issues/17236
 val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
     dependsOn(dokkaHtml)
     archiveClassifier.set("javadoc")
     from(dokkaHtml.outputDirectory)
 }
 
-// https://youtrack.jetbrains.com/issue/IDEA-209418
-sourceSets.main {
-    java.srcDir("build/generated/source/proto/main/java")
-    kotlin.srcDir("build/generated/source/proto/main/kotlin")
-}
-
 publishing {
     publications {
-        create<MavenPublication>("catalyst-core") {
+        create<MavenPublication>("catalyst-grpc") {
             artifact(javadocJar)
             from(components["java"])
 
             pom {
-                name.set("Catalyst Core Client")
-                description.set("Base client required for using Catalyst on JVM languages.")
+                name.set("Catalyst gRPC Client")
+                description.set("Monitors gRPC servers with Catalyst.")
                 url.set("https://www.catalystmonitor.com")
                 licenses {
                     license {
@@ -108,5 +119,5 @@ publishing {
 }
 
 signing {
-    sign(publishing.publications["catalyst-core"])
+    sign(publishing.publications["catalyst-grpc"])
 }

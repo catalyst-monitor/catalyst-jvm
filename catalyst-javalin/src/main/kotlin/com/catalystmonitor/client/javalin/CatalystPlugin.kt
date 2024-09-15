@@ -1,18 +1,19 @@
 package com.catalystmonitor.client.javalin
 
-import com.catalystmonitor.client.core.CatalystServer
+import com.catalystmonitor.client.core.Catalyst
 import com.catalystmonitor.client.core.CommonStrings
-import com.catalystmonitor.client.core.ServerRequestContext
+import com.catalystmonitor.client.core.Reporter.FetchSpan
+import com.catalystmonitor.client.core.ServerAction
 import io.javalin.config.JavalinConfig
 import io.javalin.plugin.Plugin
-import java.time.Duration
-import java.time.Instant
+import io.javalin.router.matcher.PathParser
 import java.util.*
 import java.util.function.Consumer
 
 class CatalystPlugin(userConfig: Consumer<Config>) : Plugin<CatalystPlugin.Config>(userConfig, Config()) {
     companion object {
-        private const val REQUEST_TIME_ATTR = "catalyst_request_timer"
+        private const val CATALYST_SPAN_INSTANCE = "catalyst_span"
+        private const val CATALYST_CONTEXT_SCOPE_INSTANCE = "catalyst_context_scope"
         private val defaultEndpoints = listOf("*")
     }
 
@@ -23,6 +24,8 @@ class CatalystPlugin(userConfig: Consumer<Config>) : Plugin<CatalystPlugin.Confi
     override fun onInitialize(config: JavalinConfig) {
         val endpointsToMatch = if (pluginConfig.endpoints.isEmpty()) defaultEndpoints else pluginConfig.endpoints
 
+        val pathParserCache = mutableMapOf<String, PathParser>()
+
         config.router.mount { router ->
             for (endpoint in endpointsToMatch) {
                 router.before(endpoint) { ctx ->
@@ -31,39 +34,48 @@ class CatalystPlugin(userConfig: Consumer<Config>) : Plugin<CatalystPlugin.Confi
                         sessionId = UUID.randomUUID().toString()
                         ctx.cookie(CommonStrings.SESSION_COOKIE_NAME, sessionId)
                     }
-                    CatalystServer.Context.setLocal(
-                        ServerRequestContext(
-                            fetchId = UUID.randomUUID().toString(),
-                            sessionId = sessionId,
-                            pageViewId = ctx.header(CommonStrings.PAGE_VIEW_ID_HEADER),
-                            parentFetchId = ctx.header(CommonStrings.PARENT_FETCH_ID_HEADER),
+                    val fetchSpan = Catalyst.getReporter().startServerAction(
+                        ServerAction(
+                            method = "Unknown",
+                            rawPath = "Unknown",
+                            pathPattern = "Unknown",
+                            patternArgs = emptyMap(),
+                            headers = ctx.headerMap(),
+                            cookies = ctx.cookieMap(),
                         )
                     )
-                    ctx.attribute(REQUEST_TIME_ATTR, Instant.now())
+                    ctx.attribute(CATALYST_SPAN_INSTANCE, fetchSpan)
+                    ctx.attribute(CATALYST_CONTEXT_SCOPE_INSTANCE, fetchSpan.makeCurrent())
                 }
-                // For some reason, `afterMatched` does not set endpointHandlerPath correctly.
+                // We must use after instead of afterMatched, as endpointHandlerPath() does not get populated
                 router.after(endpoint) { ctx ->
-                    val context = CatalystServer.Context.getLocal() ?: return@after
-                    if (!CatalystServer.hasInstance()) {
-                        return@after
+                    ctx.attribute<FetchSpan.CurrentSpanContext>(CATALYST_CONTEXT_SCOPE_INSTANCE)?.close()
+                    val fetchSpan = ctx.attribute<FetchSpan>(CATALYST_SPAN_INSTANCE) ?: return@after
+
+                    val endpointHandlerPath = ctx.endpointHandlerPath()
+
+                    // Since we are in the "after" handler, the context will not have the
+                    // params used to match the URL. We simply reparse the params to get them.
+                    val parser = pathParserCache.getOrPut(endpointHandlerPath) {
+                        PathParser(endpointHandlerPath, config.router)
                     }
 
-                    val isRecursive = ctx.header(CommonStrings.RECURSIVE_HEADER)
-                    val requestTime = ctx.attribute<Instant>(REQUEST_TIME_ATTR) ?: Instant.now()
+                    val rawPath = ctx.path()
+                    fetchSpan.updateMethodAndPaths(
+                        method = ctx.method().name,
+                        pathPattern = endpointHandlerPath,
+                        // We must recheck if the parser matches. When the method and
+                        // path is unknown, calling extractPathParams causes an exception.
+                        params = if (parser.matches(rawPath)) {
+                            parser.extractPathParams(rawPath)
+                        } else {
+                            mapOf()
+                        },
+                        rawPath = ctx.path(),
+                    )
 
-                    if (isRecursive != "1") {
-                        CatalystServer.getInstance().recordFetch(
-                            method = ctx.method().name,
-                            rawPath = ctx.path(),
-                            pathPattern = ctx.endpointHandlerPath(),
-                            patternArgs = ctx.pathParamMap(),
-                            statusCode = ctx.status().code,
-                            duration = Duration.between(requestTime, Instant.now()),
-                            context = context
-                        )
-                    }
-
-                    CatalystServer.Context.removeLocal()
+                    fetchSpan.setStatusCode(ctx.status().code)
+                    fetchSpan.end()
                 }
             }
         }

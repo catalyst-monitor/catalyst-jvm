@@ -5,17 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4c7c7c-c96b-4167-8716-48331bedbc7d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/BuilderMissingFieldException.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/Catalyst.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystTraceContextPropagator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/Log.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/Reporter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/ServerAction.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/SessionUserInfo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-core/src/test/kotlin/com/catalystmonitor/client/core/ReporterTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-grpc/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-grpc/src/main/kotlin/com/catalystmonitor/client/grpc/CatalystServerInterceptor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-grpc/src/test/kotlin/com/catalystmonitor/client/grpc/CatalystServerInterceptorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-grpc/src/test/proto/test.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-javalin/src/test/kotlin/com/catalystmonitor/client/javalin/CatalystPluginTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalyst-log4j2/src/main/kotlin/com/catalystmonitor/client/log4j2/Markers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalyst-core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystHttpClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystHttpClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/CatalystServer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/LogArgument.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/LogArgument.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/ServerRequestContext.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/kotlin/com/catalystmonitor/client/core/Utilities.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/main/proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/test/kotlin/com/catalystmonitor/client/core/CatalystHttpClientTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-core/src/test/kotlin/com/catalystmonitor/client/core/CatalystHttpClientTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalyst-core/src/test/kotlin/com/catalystmonitor/client/core/CatalystServerTest.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/catalyst-javalin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-javalin/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalyst-javalin/src/main/kotlin/com/catalystmonitor/client/javalin/CatalystPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-javalin/src/main/kotlin/com/catalystmonitor/client/javalin/CatalystPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalyst-log4j2/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-log4j2/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalyst-log4j2/src/main/kotlin/com/catalystmonitor/client/log4j2/CatalystAppender.kt" beforeDir="false" afterPath="$PROJECT_DIR$/catalyst-log4j2/src/main/kotlin/com/catalystmonitor/client/log4j2/CatalystAppender.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +66,28 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="catalyst-monitor" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,29 +101,167 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.catalyst-jvm [catalyst-core:generateProto].executor": "Run",
-    "Gradle.catalyst-jvm [catalyst-core:publishAllPublicationsToMyRepoRepository].executor": "Run",
-    "Gradle.catalyst-jvm [catalyst-core:test].executor": "Run",
-    "Gradle.catalyst-jvm [publishAllPublicationsToMyRepoRepository].executor": "Run",
-    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/bill/Work/catalyst-jvm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build catalyst-jvm.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CatalystHttpClientTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CatalystPluginTest.handles method.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CatalystServerInterceptorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReporterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReporterTest.startServerAction sets session ID baggage when no previous session ID.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'catalyst-monitor.catalyst-core'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'catalyst-monitor.catalyst-grpc'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'catalyst-monitor.catalyst-javalin'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'com.catalystmonitor.client.javalin'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.catalyst-jvm [catalyst-core:generateProto].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.catalyst-jvm [catalyst-core:publishAllPublicationsToMyRepoRepository].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.catalyst-jvm [catalyst-core:test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.catalyst-jvm [publishAllPublicationsToMyRepoRepository].executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in catalyst-monitor.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin script (Beta).build.gradle.kts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bill/Work/catalyst-jvm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "/home/bill/.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/home/bill/.gradle&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/catalyst-grpc/src/test/proto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.catalyst-jvm [publishAllPublicationsToMyRepoRepository]">
+    <configuration name="CatalystHttpClientTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":catalyst-core:test" />
+            <option value="--tests" />
+            <option value="&quot;com.catalystmonitor.client.core.CatalystHttpClientTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CatalystServerInterceptorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":catalyst-grpc:test" />
+            <option value="--tests" />
+            <option value="&quot;com.catalystmonitor.client.grpc.CatalystServerInterceptorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReporterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":catalyst-core:test" />
+            <option value="--tests" />
+            <option value="&quot;com.catalystmonitor.client.core.ReporterTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReporterTest.startServerAction sets session ID baggage when no previous session ID" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":catalyst-core:test" />
+            <option value="--tests" />
+            <option value="&quot;com.catalystmonitor.client.core.ReporterTest.startServerAction sets session ID baggage when no previous session ID&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'catalyst-monitor.catalyst-javalin'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":catalyst-javalin:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="catalyst-jvm [publishAllPublicationsToMyRepoRepository]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -121,6 +297,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.CatalystServerInterceptorTest" />
+        <item itemvalue="Gradle.Tests in 'catalyst-monitor.catalyst-javalin'" />
+        <item itemvalue="Gradle.ReporterTest" />
+        <item itemvalue="Gradle.ReporterTest.startServerAction sets session ID baggage when no previous session ID" />
+        <item itemvalue="Gradle.CatalystHttpClientTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

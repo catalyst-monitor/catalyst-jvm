@@ -1,6 +1,3 @@
 [submodule "core/src/main/proto"]
 	path = core/src/main/proto
 	url = git@github.com:catalyst-monitor/catalyst-proto.git
-[submodule "catalyst-core/src/main/proto"]
-	path = catalyst-core/src/main/proto
-	url = git@github.com:catalyst-monitor/catalyst-proto.git
