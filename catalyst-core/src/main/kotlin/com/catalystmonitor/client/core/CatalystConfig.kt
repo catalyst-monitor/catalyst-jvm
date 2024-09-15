@@ -4,7 +4,7 @@ data class CatalystConfig(
     val privateKey: String,
     val version: String,
     val systemName: String,
-    val baseUrl: String = "https://app.catalystmonitor.com",
+    val baseUrl: String = "https://app.catalystmonitor.com:4173",
     val disabled: Boolean = false,
     val recursive: Boolean = false
 ) {
