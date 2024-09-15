@@ -191,12 +191,14 @@ class Reporter internal constructor(
         headers: Map<String, String>,
         cookies: Map<String, String>
     ): ExtractedContextAttributes {
-        val sessionId = headers[CommonStrings.SESSION_ID_HEADER]
-        val pageViewId = headers[CommonStrings.PAGE_VIEW_ID_HEADER]
+        val lowerCaseHeaders = headers.map { e -> e.key.lowercase() to e.value }.toMap()
+
+        val sessionId = lowerCaseHeaders[CommonStrings.SESSION_ID_HEADER.lowercase()]
+        val pageViewId = lowerCaseHeaders[CommonStrings.PAGE_VIEW_ID_HEADER.lowercase()]
         val sessionIdCookie = cookies[CommonStrings.SESSION_COOKIE_NAME]
 
         val currentContext =
-            propagators.textMapPropagator.extract(Context.current(), headers, PlainMapGetter())
+            propagators.textMapPropagator.extract(Context.current(), lowerCaseHeaders, PlainMapGetter())
 
         var baggage = Baggage.fromContext(currentContext)
 

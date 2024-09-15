@@ -138,6 +138,32 @@ internal class ReporterTest {
     }
 
     @Test
+    fun `startServerAction headers are not case sensitive`() {
+        val span = Reporter(fixedClock) { "random-session" }.startServerAction(
+            ServerAction(
+                pathPattern = "/test/{num}",
+                patternArgs = mapOf("num" to "1"),
+                method = "get",
+                cookies = mapOf(),
+                headers = mapOf(
+                    CommonStrings.SESSION_ID_HEADER.lowercase() to "0af7651916cd43dd8448eb211c80319c",
+                    CommonStrings.PAGE_VIEW_ID_HEADER.lowercase() to "b9c7c989f97918e1",
+                    "tRaCePaReNt" to "00-0af7651916cd43dd8448eb211c80319c-b9c7c989f97918e1-01"
+                ),
+                rawPath = "/test/1",
+            )
+        )
+        span.end()
+
+        assertThat(otelTesting.spans).hasSize(1)
+        assertThat(otelTesting.spans[0])
+            .hasTraceId("0af7651916cd43dd8448eb211c80319c")
+            .hasParentSpanId("b9c7c989f97918e1")
+            .hasAttribute(AttributeKey.stringKey("catalyst.sessionId"), "0af7651916cd43dd8448eb211c80319c")
+            .hasAttribute(AttributeKey.stringKey("catalyst.pageViewId"), "b9c7c989f97918e1")
+    }
+
+    @Test
     fun `startServerAction propagates session ID from baggage`() {
         val span = Reporter(fixedClock) { "random-session" }.startServerAction(
             ServerAction(
